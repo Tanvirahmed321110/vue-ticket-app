@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket_App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="ticket-app">
+            <div class="ticket-app-container">
+                <h1>Ticket Booking App</h1>
+                <div class="ticket-app-wraper">
+                    
+                    
+                    <div class="confirm-page" v-if="isConfirm">
+                        <div class="confirm-wraper">
+                            <h3>Thanks For Buying</h3>
+                            <table>
+                                <tr>
+                                    <th>Passenger Name</th>
+                                    <td>{{name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Contact Number </th>
+                                    <td>{{mobile}}</td>
+                                </tr>
+                                <tr class="template-seat">
+                                    <th>Seats</th>
+                                    <td>
+                                        <div v-for="seat in selectedSeatF" :key="seat.name">
+                                            <div style="display: inline;">{{seat.name}}</div>
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th>Total Cost</th>
+                                    <td>{{totalPriceF()}}</td>
+                                </tr>
+                            </table>
+                            <button @click="againBookF">Again Book</button>
+                        </div>
+                    </div>
+                    
+                    <div class="font-end" v-if="!isConfirm">
+                        <!-- find color start -->
+                        <div class="seat-color-find-container">
+                            <div v-for="(value,key) in seatColorFind" :key="seatColor" class="seat-color-find">
+                                <div class="seat-color" :style="{backgroundColor:value.color}"></div>
+                                <div class="seat-text">  {{value.text}}    </div>
+                            </div>
+                        </div>
+                        <!-- find color end -->
+                        
+                        <div class="ticket-app">
+                            <div class="ticket-app-left">
+                                <div class="bus">
+                                    <div class="bus-wraper">
+                                        <div class="bus-top">
+                                            <div class="bus-door">Door</div>
+                                            <div class="bus-driver">Driver</div>
+                                        </div>
+                                        <div class="bus-bottom">
+                                            <div class="seats">
+                                                <div class="seat"
+                                                    :class="{
+                                                        'seat-sold': seat.type==='sold',
+                                                        'seat-booked': seat.type==='booked',
+                                                        'seat-selected': seat.type==='selected'
+                                                    }"
+                                                    @click="handelSeatClickedF(index)"
+                                                    v-for="(seat,index) in seats"
+                                                    key:="seat.name">
+                                                    {{seat.name}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ticket-app-right">
+                                <div class="select-seat" v-if="selectedSeatF.length==0">
+                                    <p>No seat Selected</p>
+                                </div>
+                                <div v-else>
+                                    <strong>_Selected Seat_</strong>
+                                    <div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Seat Name</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(seat,index) in selectedSeatF">
+                                                    <td>{{seat.name}}</td>
+                                                    <td>TK {{seat.price}}</td>
+                                                </tr>
+                                                <tr v-if="appliedCoupon!==null">
+                                                    <th>Discount</th>
+                                                    <th>TK -{{appliedCoupon.discount}}</th>
+                                                </tr>
+                                                <tr class="total-price">
+                                                    <th>Total </th>
+                                                    <th>TK {{totalPriceF()}} </th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                        <div class="coupon" v-if="appliedCoupon===null">
+                                            <label for="#">Have a Coupon Code?</label>
+                                            <input type="text"  v-model="couponCode" placeholder="Enter a Coupon">
+                                        </div>
+                                        <p v-else style="padding: 8px 0;">sucessfully Discount {{appliedCoupon.discount}}Taka</p>
+                                        <div class="userInput">
+                                            <input type="text" v-model="name" placeholder="Name*">
+                                            <input type="number" v-model="mobile" placeholder="Mobile*">
+                                        </div>
+                                        <div class="confirm-btn">
+                                            <button @click="confirmF">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!--ticket app right end-->
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

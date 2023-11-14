@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-weight: 500;
+}
+h1{
+    text-align: center;
+    margin: 25px 0;
+    font-size: 34px;
+    font-weight: 700;
+    color: rgb(82, 75, 75);
+}
+
+
+
+/*======= ticket-app-wraper ====== */
+.ticket-app-wraper{
+     width: 600px;
+     height: 400px;
+     padding: 10px;
+     margin: 0 auto;
+     margin-top:45px;
+     border: 2px solid rgb(241, 235, 224);
+     box-shadow: 0 2px 5px rgb(0, 0, 0,0.2);
+     border-radius: 8px;
+}
+
+
+.seat-color-find-container{
+    display: flex;
+    gap: 25px;
+}
+.seat-color-find{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.seat-color{
+    width: 30px;
+    height: 20px;
+    border: 1px solid rgb(194, 188, 177);
+    box-sizing: border-box;
+}
+
+
+
+.ticket-app{
+    display: flex;
+}
+/* ======  bus ======== */
+.bus-wraper{
+    padding: 6px;
+    margin-top: 15px;
+    width: 190px;
+    height: 340px;
+    border: 1px solid rgb(153, 153, 153);
+}
+.bus-top{
+    display: flex;
+    justify-content: space-between;
+}
+.bus-door,.bus-driver{
+    width: 72px;
+    text-align: center;
+    padding: 6px 0;
+    border: 1px solid rgb(152, 152, 172);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+
+/* seat style */
+.seats{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.seat{
+    margin:4px;
+    border: 1px solid gray;
+    padding: 8px 4px;
+    min-height: 25px ;
+    width: 28px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all .3s linear;
+    user-select: none;
+}
+/* .seat:nth-child(4n-1){
+    margin-left: 12px;
+}
+.seat:nth-child(4n-2){
+    margin-right: 12px;
+} */
+.seat:nth-child(4n-2){
+    margin-right: 12px;
+}
+.seat:nth-child(4n-1){
+    margin-left: 12px;
+}
+.seat-sold{
+    background-color: red;
+    color: white;
+}
+.seat-selected{
+    background-color: #00ff00;
+}
+.seat-booked{
+    background-color: gray ;
+}
+.seat:hover{
+    border: 1px dotted rgb(48, 48, 41);
+}
+.seat-sold:active,.seat:active{
+    transition: 0s;
+    border: 1px solid black;
+    box-shadow: 0 6px 40px blueviolet;
+}
+
+
+.ticket-app-right{
+    position: relative;
+    width: 100%;
+    padding: 10px 35px;
+}
+.ticket-app-right p{
+    font-size: 15px;
+    font-weight: 400 !important;
+}
+.ticket-app-right strong{
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.select-seat{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,50%);
+}
+
+
+
+
+/* table  */
+table{
+    border: 1px solid rgb(194, 188, 188);
+    margin: 1px;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px solid rgb(202, 197, 197);
+    padding-left: 15px;
+    padding: 5px;
+    width: 250px;
+    text-align: left;
+    font-weight: bold;
+}
+td{
+    font-weight: 400;
+    /* background-color: antiquewhite; */
+}
+.total-price{
+    background-color: rgb(228, 203, 172);
+}
+
+input{
+    padding: 5px 10px;
+    border: 1px solid rgb(224, 191, 223);
+    outline: none;
+    border-radius: 3px;
+    color: blue;
+    letter-spacing: 1px;
+    /* width: 100px; */
+}
+input::placeholder{
+    font-size: 14px;
+    color: gray;
+    font-weight: 400;
+}
+input:focus{
+    background-color: rgb(224, 240, 234);
+    transition: .3s all linear;
+}
+/* coupon */
+.coupon{
+    width: 99.4%;
+    margin:15px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-between;
+}
+.coupon label{
+    font-size: 14px;
+}
+.coupon input{
+    width: 50%;
+}
+
+
+/* userInput */
+.userInput{
+    display: flex;
+    width:99.4%;
+    justify-content: space-between;
+}
+.userInput input{
+    width: 49%;
+}
+
+
+.confirm-btn{
+    
+}
+.confirm-btn button{
+    width: 99.4%;
+    display: inline-block;
+    background-color: blueviolet;
+    padding: 6.5px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all .4s linear;
+}
+.confirm-btn button:hover{
+    width: 70%;
+    margin-left: 15%;
+    background-color: green;
+    text-align: center;
+}
+
+
+
+.confirm-page{
+    width: 80%;
+    margin: 25px auto;
+    padding: 25px;
+}
+.confirm-page h3{
+    text-align: center;
+    font-size: 28px;
+}
+.confirm-page table{
+    margin-top: 25px;
+}
+
+
+
+.template-seat{
+    font-size: 14px;
+    font-weight: 400 !important;
+    padding-top: 13px !important;
+}
